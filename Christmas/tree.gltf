@@ -113,12 +113,6 @@
             ],
             "name" : "_lowpolytreeLeaves",
             "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0.03529411926865578,
-                    0.21568629145622253,
-                    0,
-                    1
-                ],
                 "metallicFactor" : 1,
                 "roughnessFactor" : 0.858578622341156
             }
