@@ -1,0 +1,83 @@
+<!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
+<!--script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script-->
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<!--script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script-->
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<script src="https://raw.githubusercontent.com/donmccurdy/aframe-extras/master/src/loaders/index.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+
+<style>
+  .arjs-loader {
+    height: 20%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.01);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<body style='margin : 0px; overflow: hidden;'>
+  <div class="arjs-loader">
+    <div>Bitte scannen Sie den Weihnachtsbaum auf der Karte mit Ihrer Kamera.</div>
+  </div>
+	<a-scene renderer="logarithmicDepthBuffer: true;" embedded arjs='trackingMethod: best; sourceType: webcam' loading-screen="dotsColor: red; backgroundColor: black" vr-mode-ui="enabled: false;">
+		<!--a-box position='0 0.5 0' material='opacity: 0.5;'></a-box-->
+		
+    <a-assets>
+      <a-asset-item id="santa" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/SantaGesichtBartAbstand.gltf"></a-asset-item>
+      <a-asset-item id="redPresent" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/redPresent.gltf"></a-asset-item>
+      <a-asset-item id="violetPresent" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/violetPresent.gltf"></a-asset-item>
+      <a-asset-item id="greenPresent" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/greenPresent.gltf"></a-asset-item>
+      <a-asset-item id="bluePresent" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/bluePresent.gltf"></a-asset-item>
+      <a-asset-item id="snowflake" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/Snowflake.gltf"></a-asset-item>
+      <a-asset-item id="tree" src="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/tree.gltf"></a-asset-item>
+      <a-asset-item id="facetest" src="https://raw.githubusercontent.com/juuuuul/Assets/master/GraenerFace.gltf"></a-asset-item>
+    </a-assets>
+    
+    
+    
+    <a-light type="ambient" intensity="2"> </a-light>
+		
+		<!--a-marker type='barcode' value='5'-->
+		<a-marker type='pattern' url="https://raw.githubusercontent.com/juuuuul/Assets/master/pattern-tanne.patt">
+		<!--a-marker type='pattern' url="https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/pattern-weihnachtsbaum2.patt"-->
+      <!--TODO uncomment when this is not annoying anymore a-entity id="christmassong"
+          position="0 0 0" sound="src: https://raw.githubusercontent.com/LucieLucieLucie/LucieLucieLucie.github.io/master/Christmas/Merry_Christmas.mp3; autoplay: true"></a-entity-->
+      <a-entity gltf-model="#santa" animation-mixer></a-entity>
+      <a-entity gltf-model="#redPresent" scale = "0.2 0.2 0.2" position="0 0 -0.75"></a-entity>
+      <a-entity gltf-model="#bluePresent" scale = "0.3 0.3 0.3" position="0.5 0 -0.75"></a-entity>
+      <a-entity gltf-model="#violetPresent" scale = "0.25 0.25 0.4" position="-0.5 0 -0.75"></a-entity>
+      <a-entity gltf-model="#greenPresent" scale = "0.2 0.3 0.2" position="-0.25 0 -0.5"></a-entity>
+      <a-entity gltf-model="#tree" scale = "1.2 1.2 1.2" position="0 0 -1"></a-entity>
+  
+      <a-entity gltf-model="#snowflake" scale = "0.1 0.1 0.1" position = "0.2 1.5 0.2">
+        <a-animation attribute="position" from="0 2 0" to="0 0 0" dur="2800" repeat="indefinite" easing="linear"></a-animation>
+      </a-entity>
+      <a-entity gltf-model="#snowflake" scale = "0.1 0.1 0.1" position = "0.2 1.5 0.2">
+        <a-animation attribute="position" from="0.3 2 0" to="0.3 0 0" dur="3000" repeat="indefinite" easing="linear"></a-animation>
+      </a-entity>
+      <a-entity gltf-model="#snowflake" scale = "0.1 0.1 0.1" position = "0.2 1.5 0.2">
+        <a-animation attribute="position" from="-0.3 2 0" to="-0.3 0 0" dur="3200" repeat="indefinite" easing="linear"></a-animation>
+      </a-entity>
+      <!--a-entity gltf-model="#facetest" scale = "1 1 1" position = "0.0 3.0 0.0" rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity-->
+      
+		<!--/a-marker-->
+
+				</a-marker>
+				<a-entity camera></a-entity>
+		    <!--a-marker-camera type='pattern' url="https://raw.githubusercontent.com/juuuuul/Assets/master/pattern-QR-Tannenbaum_kein%20rahmen.patt"></a-marker-camer-->
+				<!--a-marker-camera type='pattern' url="https://raw.githubusercontent.com/juuuuul/Assets/master/pattern-pattern-QR-Tannenbaum_large.patt"></a-marker-camera-->
+				<!--a-marker-camera type='pattern' url="https://raw.githubusercontent.com/juuuuul/Assets/master/pattern-pattern-QR-Tannenbaum_green_tree_without_qr.patt"></a-marker-camera-->
+	</a-scene>
+</body>
